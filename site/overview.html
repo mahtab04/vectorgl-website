@@ -326,8 +326,16 @@ FetchContent_Declare(vectorgl
 )
 FetchContent_MakeAvailable(vectorgl)
 
+# UI + Canvas + Scene (core is linked automatically)
 target_link_libraries(my_app PRIVATE vectorgl::ui)</code></pre>
             </div>
+            <p>
+              Linking <code>vectorgl::ui</code> includes Canvas and Scene through
+              its public core dependency. For graphics without UI, link
+              <code>vectorgl::vectorgl</code> instead. FetchContent makes the
+              targets available; it does not link your application automatically.
+              Link the GLFW and native-dialog targets when using those backends.
+            </p>
             <p>For an installed SDK, request its components explicitly:</p>
             <div class="code-block">
               <div class="code-header">

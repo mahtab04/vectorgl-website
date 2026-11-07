@@ -476,11 +476,14 @@ FetchContent_Declare(vectorgl
 )
 FetchContent_MakeAvailable(vectorgl)
 
+# UI + Canvas + Scene (core is linked automatically)
 target_link_libraries(my_app PRIVATE vectorgl::ui)</code></pre>
             </div>
             <p class="code-note">
-              Pinned to a reviewed revision. Use your own OpenGL context and
-              event loop.
+              Linking vectorgl::ui includes Canvas and Scene automatically.
+              For graphics without UI, link vectorgl::vectorgl instead.
+              FetchContent makes targets available; your application must still
+              link one. Use your own OpenGL context and event loop.
             </p>
           </div>
           <div class="install-links">
