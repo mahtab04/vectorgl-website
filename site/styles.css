@@ -10,8 +10,12 @@
   --accent-ink: #294614;
   --hover: #e6eedc;
   --header: rgba(245, 246, 242, 0.96);
-  --code: #17221e;
-  --code-fg: #e2ebdf;
+  /* Monokai-inspired editor palette stays dark in both page themes. */
+  --code: #272822;
+  --code-fg: #f8f8f2;
+  --code-header: #20211d;
+  --code-border: #494a42;
+  --code-muted: #aaa79c;
   --mono: Consolas, "Liberation Mono", monospace;
   --sans:
     "Segoe UI Variable", "Segoe UI", system-ui, -apple-system,
@@ -779,9 +783,10 @@ body[data-theme="dark"] .hero h1 span::after {
   height: 100%;
 }
 .code-block {
+  color-scheme: dark;
   color: var(--code-fg);
   background: var(--code);
-  border: 1px solid #334437;
+  border: 1px solid var(--code-border);
   border-radius: 7px;
   position: relative;
   overflow: hidden;
@@ -792,32 +797,38 @@ body[data-theme="dark"] .hero h1 span::after {
   justify-content: space-between;
   gap: 1rem;
   padding: 0.85rem 1.25rem;
-  border-bottom: 1px solid #3b4c40;
+  background: var(--code-header);
+  border-bottom: 1px solid var(--code-border);
   min-height: 3.2rem;
-  color: #b2c2b2;
-  font: 0.65rem var(--mono);
+  color: var(--code-muted);
+  font: 0.75rem var(--mono);
 }
 .code-header > .code-file {
   margin-right: auto;
 }
 .code-block pre {
   padding: 1.5rem;
+  font-size: 0.875rem;
+}
+.code-block pre ::selection {
+  background: #49483e;
+  color: var(--code-fg);
 }
 .copy-button {
   background: transparent;
   border: 0;
-  color: #c4d9bb;
-  font: 0.65rem var(--mono);
-  min-height: 2rem;
+  color: var(--code-fg);
+  font: 0.75rem var(--mono);
+  min-height: 2.25rem;
   padding: 0.3rem 0.6rem;
   border-radius: 3px;
 }
 .copy-button:hover {
-  color: #17221e;
-  background: #b4eb72;
+  color: var(--code);
+  background: #a6e22e;
 }
 .copy-button:focus-visible {
-  outline-color: #b4eb72;
+  outline-color: #a6e22e;
 }
 .code-block > .copy-button {
   position: absolute;
@@ -831,27 +842,28 @@ body[data-theme="dark"] .hero h1 span::after {
 }
 .code-keyword,
 .token-keyword {
-  color: #d9adff;
+  color: #ff6188;
 }
 .code-type,
 .token-type {
-  color: #b6e78f;
+  color: #66d9ef;
 }
 .code-string,
 .token-string {
-  color: #e7d3a1;
+  color: #e6db74;
 }
 .code-number,
 .token-number {
-  color: #b4d3ed;
+  color: #ae81ff;
 }
 .code-call,
 .token-function {
-  color: #e4ebdb;
+  color: #a6e22e;
 }
 .code-inline-comment,
 .token-comment {
-  color: #9bad9e;
+  color: var(--code-muted);
+  font-style: italic;
 }
 .capability-band {
   background: var(--soft);
